@@ -8,65 +8,317 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",sans-serif;background:#f6fbff;color:#102a3a;line-height:1.7;word-break:keep-all}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR",sans-serif;
+  background:#f6fbff;
+  color:#102a3a;
+  line-height:1.7;
+  word-break:keep-all;
+}
 a{text-decoration:none;color:inherit}
 section{padding:110px 22px}
 .container{max-width:1120px;margin:0 auto}
 
-.floating{position:fixed;right:22px;bottom:22px;z-index:999;background:#00a6d6;color:#fff;padding:15px 24px;border-radius:999px;font-weight:900;box-shadow:0 18px 45px rgba(0,166,214,.35)}
+.floating{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  z-index:999;
+  background:#00a6d6;
+  color:#fff;
+  padding:15px 24px;
+  border-radius:999px;
+  font-weight:900;
+  box-shadow:0 18px 45px rgba(0,166,214,.35);
+}
 
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px;background:linear-gradient(rgba(255,255,255,.15),rgba(246,251,255,.92)),url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=2200&q=85") center/cover no-repeat}
-.hero-box{max-width:1080px;background:rgba(255,255,255,.72);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.85);border-radius:38px;padding:72px 30px;box-shadow:0 35px 90px rgba(0,80,120,.16)}
-.label{display:inline-block;padding:8px 18px;border-radius:999px;background:#e6fbff;color:#0088ad;font-size:14px;font-weight:900;letter-spacing:.08em;margin-bottom:22px}
-h1{font-size:clamp(48px,9vw,108px);line-height:.9;letter-spacing:-.08em;color:#05374b;margin-bottom:24px}
-.hero h2{font-size:clamp(26px,5vw,58px);color:#00a6d6;margin-bottom:18px}
-.hero p{font-size:20px;color:#3f5b68;margin-bottom:34px}
+.hero{
+  position:relative;
+  min-height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:white;
+  background:#00131f;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(0,35,55,.18),rgba(0,20,35,.72)),
+    url("hero-diver.jpg") center/cover no-repeat;
+  transform:scale(1.15);
+  animation:kenburnsZoomOut 14s ease-out forwards;
+}
+
+@keyframes kenburnsZoomOut{
+  from{transform:scale(1.15)}
+  to{transform:scale(1)}
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:1080px;
+  padding:32px;
+}
+
+.label{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:999px;
+  background:rgba(230,251,255,.9);
+  color:#0088ad;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.08em;
+  margin-bottom:22px;
+}
+
+h1{
+  font-size:clamp(54px,9vw,118px);
+  line-height:.88;
+  letter-spacing:-.08em;
+  margin-bottom:24px;
+  text-shadow:0 18px 50px rgba(0,0,0,.38);
+}
+
+.hero h2{
+  font-size:clamp(26px,5vw,58px);
+  margin-bottom:18px;
+  text-shadow:0 14px 40px rgba(0,0,0,.35);
+}
+
+.hero p{
+  font-size:20px;
+  color:rgba(255,255,255,.86);
+  margin-bottom:34px;
+}
+
 .btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.btn{padding:15px 26px;border-radius:999px;font-weight:900;transition:.25s}
+.btn{
+  padding:15px 26px;
+  border-radius:999px;
+  font-weight:900;
+  transition:.25s;
+}
 .btn:hover{transform:translateY(-3px)}
 .primary{background:#00a6d6;color:#fff;box-shadow:0 15px 32px rgba(0,166,214,.28)}
 .secondary{background:#fff;color:#007fa6;border:1px solid #c8edf6}
 
 .title{text-align:center;margin-bottom:54px}
 .title span{color:#00a6d6;font-size:14px;font-weight:950;letter-spacing:.1em}
-.title h2{font-size:clamp(34px,6vw,68px);line-height:1.08;letter-spacing:-.07em;color:#07384b;margin-top:12px}
-.title p{max-width:760px;margin:18px auto 0;color:#5c7480;font-size:18px}
+.title h2{
+  font-size:clamp(34px,6vw,68px);
+  line-height:1.08;
+  letter-spacing:-.07em;
+  color:#07384b;
+  margin-top:12px;
+}
+.title p{
+  max-width:760px;
+  margin:18px auto 0;
+  color:#5c7480;
+  font-size:18px;
+}
 
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.card{background:#fff;border:1px solid #def2f8;border-radius:30px;padding:30px;box-shadow:0 22px 55px rgba(0,70,100,.08)}
+
+.card{
+  background:#fff;
+  border:1px solid #def2f8;
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 22px 55px rgba(0,70,100,.08);
+}
 .card h3{font-size:24px;color:#07384b;margin-bottom:12px}
 .card p,.card li{color:#5b707a}
 .num{font-size:38px;color:#00a6d6;font-weight:950;margin-bottom:14px}
 
 .photo-band{padding:0}
-.photos{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;max-width:1280px;margin:0 auto;padding:22px}
-.photo{min-height:420px;border-radius:36px;background:center/cover no-repeat;box-shadow:0 25px 70px rgba(0,70,100,.13)}
-.photo.small{min-height:420px;background-image:url("https://images.unsplash.com/photo-1682685797769-481b48222adf?auto=format&fit=crop&w=1200&q=85")}
-.photo.big{background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85")}
+.photos{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:18px;
+  max-width:1280px;
+  margin:0 auto;
+  padding:22px;
+}
+.photo{
+  min-height:420px;
+  border-radius:36px;
+  background:center/cover no-repeat;
+  box-shadow:0 25px 70px rgba(0,70,100,.13);
+}
+.photo.big{
+  background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85");
+}
+.photo.small{
+  background-image:url("https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=85");
+}
 
-.schedule{background:linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.58)),url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85") center/cover no-repeat;color:#fff}
+.schedule{
+  background:
+    linear-gradient(rgba(0,0,0,.48),rgba(0,0,0,.58)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85") center/cover no-repeat;
+  color:#fff;
+}
 .schedule .title h2,.schedule .title p{color:#fff}
 .timeline{position:relative;max-width:920px;margin:0 auto}
-.timeline:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:2px;background:rgba(255,255,255,.25)}
-.item{display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;margin-bottom:52px}
-.circle{width:56px;height:56px;margin:0 auto;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:950;color:#fff;z-index:2}
+.timeline:before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:2px;
+  background:rgba(255,255,255,.25);
+}
+.item{
+  display:grid;
+  grid-template-columns:1fr 80px 1fr;
+  align-items:center;
+  margin-bottom:52px;
+}
+.circle{
+  width:56px;
+  height:56px;
+  margin:0 auto;
+  background:rgba(255,255,255,.22);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:30px;
+  font-weight:950;
+  color:#fff;
+  z-index:2;
+}
 .item.left .content{text-align:right;padding-right:30px}
 .item.right .circle{grid-column:2;grid-row:1}
 .item.right .content{grid-column:3;text-align:left;padding-left:30px}
 .content h3{font-size:30px;margin-bottom:12px}
 .content p{color:rgba(255,255,255,.78);font-size:19px}
 
-.summary strong{display:block;font-size:32px;color:#00a6d6;font-weight:950;margin-bottom:6px;text-align:center}
+.summary strong{
+  display:block;
+  font-size:32px;
+  color:#00a6d6;
+  font-weight:950;
+  margin-bottom:6px;
+  text-align:center;
+}
+
 ul{list-style:none;display:grid;gap:13px}
-li{padding:14px 16px;border-radius:16px;background:#f1fbfe;font-weight:750}
+li{
+  padding:14px 16px;
+  border-radius:16px;
+  background:#f1fbfe;
+  font-weight:750;
+}
 
-.price-box{max-width:820px;margin:0 auto;text-align:center;background:#fff;border:1px solid #def2f8;border-radius:42px;padding:58px 26px;box-shadow:0 35px 90px rgba(0,70,100,.13)}
-.money{font-size:clamp(58px,9vw,104px);font-weight:950;letter-spacing:-.08em;color:#00a6d6;line-height:1;margin:18px 0}
-.deposit{display:inline-block;margin-top:16px;padding:10px 22px;border-radius:999px;background:#fff0c7;color:#8b6500;font-weight:950}
+.price-box{
+  max-width:860px;
+  margin:0 auto;
+  text-align:center;
+  background:#fff;
+  border:1px solid #def2f8;
+  border-radius:42px;
+  padding:58px 26px;
+  box-shadow:0 35px 90px rgba(0,70,100,.13);
+}
+.money{
+  font-size:clamp(58px,9vw,104px);
+  font-weight:950;
+  letter-spacing:-.08em;
+  color:#00a6d6;
+  line-height:1;
+  margin:18px 0;
+}
 
-.check{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #e4f3f7;padding:16px 0}
+.deposit-card{
+  margin-top:40px;
+  display:grid;
+  gap:18px;
+}
+
+.bank-card{
+  background:#f8fcff;
+  border:1px solid #d9eef7;
+  border-radius:22px;
+  padding:24px 28px;
+  text-align:left;
+}
+
+.bank-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.bank-icon{font-size:28px}
+.bank-title{
+  font-size:22px;
+  font-weight:900;
+  color:#0b3d52;
+}
+.bank-sub{
+  color:#67808d;
+  font-size:15px;
+}
+
+.bank-grid{
+  display:grid;
+  grid-template-columns:140px 1fr;
+  row-gap:12px;
+  font-size:17px;
+}
+
+.account-wrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+#accountNumber{
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+#copyBtn{
+  border:none;
+  background:#00a6d6;
+  color:white;
+  padding:8px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.info-card{
+  background:#fff8e7;
+  border:1px solid #ffe4a6;
+  border-radius:22px;
+  padding:20px 24px;
+  text-align:left;
+  color:#6a5b30;
+}
+
+.check{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid #e4f3f7;
+  padding:16px 0;
+}
 .check:last-child{border-bottom:0}
 .check b{color:#07384b}
 .ok{color:#00a6d6;font-weight:950}
@@ -74,42 +326,69 @@ li{padding:14px 16px;border-radius:16px;background:#f1fbfe;font-weight:750}
 
 .refund{background:#fff}
 .refund-list{display:grid;gap:14px;max-width:860px;margin:0 auto}
-.refund-row{display:grid;grid-template-columns:180px 1fr;background:#f1fbfe;border:1px solid #dff3f8;border-radius:22px;padding:18px 22px}
+.refund-row{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  background:#f1fbfe;
+  border:1px solid #dff3f8;
+  border-radius:22px;
+  padding:18px 22px;
+}
 .refund-row b{color:#00a6d6}
 
-.final{min-height:72vh;display:flex;align-items:center;text-align:center;background:linear-gradient(rgba(255,255,255,.18),rgba(246,251,255,.94)),url("https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=2200&q=85") center/cover no-repeat}
-.final h2{font-size:clamp(42px,7vw,82px);line-height:1;letter-spacing:-.08em;color:#05374b;margin-bottom:24px}
+.final{
+  min-height:72vh;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  background:
+    linear-gradient(rgba(255,255,255,.18),rgba(246,251,255,.94)),
+    url("https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=2200&q=85") center/cover no-repeat;
+}
+.final h2{
+  font-size:clamp(42px,7vw,82px);
+  line-height:1;
+  letter-spacing:-.08em;
+  color:#05374b;
+  margin-bottom:24px;
+}
 .final h2 strong{color:#00a6d6}
 .final p{font-size:20px;color:#49626e;margin-bottom:32px}
-footer{text-align:center;padding:38px 22px;background:#fff;color:#789;border-top:1px solid #e3f2f6}
+
+footer{
+  text-align:center;
+  padding:38px 22px;
+  background:#fff;
+  color:#789;
+  border-top:1px solid #e3f2f6;
+}
 
 @media(max-width:900px){
-.grid4,.grid3{grid-template-columns:1fr 1fr}
-.two,.photos{grid-template-columns:1fr}
+  .grid4,.grid3{grid-template-columns:1fr 1fr}
+  .two,.photos{grid-template-columns:1fr}
 }
 @media(max-width:680px){
-section{padding:78px 18px}
-.grid4,.grid3{grid-template-columns:1fr}
-.timeline:before{left:28px}
-.item{grid-template-columns:58px 1fr;gap:18px}
-.item.left .content,.item.right .content{grid-column:2;text-align:left;padding:0}
-.item.left .circle,.item.right .circle{grid-column:1;grid-row:1}
-.refund-row{grid-template-columns:1fr}
-.floating{left:18px;right:18px;text-align:center}
-.photo,.photo.small{min-height:300px}
+  section{padding:78px 18px}
+  .grid4,.grid3{grid-template-columns:1fr}
+  .timeline:before{left:28px}
+  .item{grid-template-columns:58px 1fr;gap:18px}
+  .item.left .content,.item.right .content{grid-column:2;text-align:left;padding:0}
+  .item.left .circle,.item.right .circle{grid-column:1;grid-row:1}
+  .refund-row{grid-template-columns:1fr}
+  .bank-grid{grid-template-columns:1fr}
+  .floating{left:18px;right:18px;text-align:center}
+  .photo,.photo.small{min-height:300px}
 }
 </style>
 </head>
 
 <body>
 
-<a class="floating"
-   href="https://pf.kakao.com/_sxaxmfK/chat"
-   target="_blank">
+<a class="floating" href="https://pf.kakao.com/_sxaxmfK/chat" target="_blank">
 💬 카카오톡 상담
 </a>
 
-<header class="hero-kenburns">
+<header class="hero">
   <div class="hero-bg"></div>
 
   <div class="hero-content">
@@ -127,20 +406,42 @@ section{padding:78px 18px}
     </div>
   </div>
 </header>
-   
+
 <section>
   <div class="container">
     <div class="title">
       <span>TOUR POINT</span>
       <h2>짧지만 진하게,<br>Kerama Blue를 만나는 일정</h2>
-      <p>2박 3일 동안 총 5회 다이빙. 숙박, 현지 교통, 조식과 중식까지 포함된 편한 구성입니다.</p>
+      <p>
+        2박 3일 동안 총 5회 다이빙.
+        숙박, 현지 교통, 조식과 중식까지 포함된 편한 구성입니다.
+      </p>
     </div>
 
     <div class="grid4">
-      <div class="card"><div class="num">01</div><h3>케라마 제도</h3><p>오키나와 대표 다이빙 지역인 케라마 제도 중심 투어입니다.</p></div>
-      <div class="card"><div class="num">02</div><h3>총 5회 다이빙</h3><p>도착일 2회, 둘째 날 3회로 알차게 진행합니다.</p></div>
-      <div class="card"><div class="num">03</div><h3>4성급 숙박</h3><p>전 일정 숙박 포함, 2인 1실 기준입니다.</p></div>
-      <div class="card"><div class="num">04</div><h3>예약금 40만원</h3><p>참가 확정은 예약금 입금 기준으로 진행됩니다.</p></div>
+      <div class="card">
+        <div class="num">01</div>
+        <h3>케라마 제도</h3>
+        <p>오키나와 대표 다이빙 지역인 케라마 제도 중심 투어입니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="num">02</div>
+        <h3>총 5회 다이빙</h3>
+        <p>도착일 2회, 둘째 날 3회로 알차게 진행합니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="num">03</div>
+        <h3>4성급 숙박</h3>
+        <p>전 일정 숙박 포함, 2인 1실 기준입니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="num">04</div>
+        <h3>예약금 40만원</h3>
+        <p>참가 확정은 예약금 입금 기준으로 진행됩니다.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -205,89 +506,43 @@ section{padding:78px 18px}
       <div class="label">1인 기준</div>
       <div class="money">¥140,000</div>
       <p>전 일정 숙박 포함 / 4성급 호텔 2인 1실 기준</p>
-      <div style="margin-top:40px;display:grid;gap:18px;">
 
-    <!-- 예약금 -->
-    <div style="background:#f8fcff;border:1px solid #d9eef7;border-radius:22px;padding:24px 28px;text-align:left;">
-
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
-            <div style="font-size:28px;">💳</div>
+      <div class="deposit-card">
+        <div class="bank-card">
+          <div class="bank-head">
+            <div class="bank-icon">💳</div>
             <div>
-                <div style="font-size:22px;font-weight:900;color:#0b3d52;">예약금 안내</div>
-                <div style="color:#67808d;font-size:15px;">참가 신청 후 예약금 입금 시 참가가 확정됩니다.</div>
+              <div class="bank-title">예약금 입금 안내</div>
+              <div class="bank-sub">참가 신청 후 예약금 입금 시 참가가 확정됩니다.</div>
             </div>
-        </div>
+          </div>
 
-        <div style="display:grid;grid-template-columns:140px 1fr;row-gap:12px;font-size:17px;">
-
+          <div class="bank-grid">
             <strong>예약금</strong>
-            <span style="font-weight:900;color:#00a6d6;">400,000원 (약 ¥40,000)</span>
+            <span style="font-weight:900;color:#00a6d6;">400,000원 / 약 ¥40,000</span>
 
             <strong>은행</strong>
             <span>카카오뱅크</span>
 
             <strong>계좌번호</strong>
-
-<div style="display:flex;align-items:center;gap:10px;">
-
-    <span
-        id="accountNumber"
-        style="font-size:21px;font-weight:900;letter-spacing:1px;">
-        3333-08-0806797
-    </span>
-
-    <button
-        id="copyBtn"
-        onclick="copyAccount()"
-        style="
-        border:none;
-        background:#00a6d6;
-        color:white;
-        padding:8px 14px;
-        border-radius:10px;
-        cursor:pointer;
-        font-weight:700;">
-        📋 복사
-    </button>
-
-</div>
+            <div class="account-wrap">
+              <span id="accountNumber">3333-08-0806797</span>
+              <button id="copyBtn" onclick="copyAccount()">📋 복사</button>
+            </div>
 
             <strong>예금주</strong>
             <span>다이빙솔루션 (강성모)</span>
-
+          </div>
         </div>
 
-    </div>
-
-    <!-- 안내 -->
-    <div style="background:#fff8e7;border:1px solid #ffe4a6;border-radius:22px;padding:20px 24px;text-align:left;">
-
-        <div style="display:flex;gap:12px;align-items:flex-start;">
-
-            <div style="font-size:26px;">💡</div>
-
-            <div>
-
-                <div style="font-weight:900;font-size:19px;margin-bottom:10px;">
-                    입금 안내
-                </div>
-
-                <div style="color:#6a5b30;line-height:1.8;">
-
-                    • 예약금은 <b>원화 400,000원</b> 기준으로 입금해 주세요.<br>
-
-                    • 잔금은 <b>¥140,000</b>에서 예약금을 제외한 금액을
-                    <b>출발 전 환율 기준</b>으로 별도 안내드립니다.
-
-                </div>
-
-            </div>
-
+        <div class="info-card">
+          <strong>💡 입금 안내</strong><br>
+          예약금은 <b>원화 400,000원</b> 기준으로 입금해 주세요.<br>
+          잔금은 <b>¥140,000</b>에서 예약금을 제외한 금액을
+          <b>출발 전 환율 기준</b>으로 별도 안내드립니다.
         </div>
-
+      </div>
     </div>
-
-</div>
   </div>
 </section>
 
@@ -325,7 +580,7 @@ section{padding:78px 18px}
     <div class="title">
       <span>CANCEL POLICY</span>
       <h2>취소 · 환불 규정</h2>
-      <p>아래 규정은 기본 안내이며, 항공권과 개인 예약 항목은 각 발권처 및 예약처 규정을 따릅니다.</p>
+      <p>항공권과 개인 예약 항목은 각 발권처 및 예약처 규정을 따릅니다.</p>
     </div>
 
     <div class="refund-list">
@@ -346,9 +601,23 @@ section{padding:78px 18px}
     </div>
 
     <div class="grid3">
-      <div class="card"><div class="num">01</div><h3>항공권</h3><p>항공권은 개별 발권입니다. 도착 및 출발 시간은 투어 일정에 맞춰 안내드립니다.</p></div>
-      <div class="card"><div class="num">02</div><h3>해양 상황</h3><p>케라마 제도 출항 여부와 포인트는 기상 및 해양 상황에 따라 변경될 수 있습니다.</p></div>
-      <div class="card"><div class="num">03</div><h3>다이빙 안전</h3><p>브리핑, 버디 체크, 가이드 지시 준수는 필수입니다.</p></div>
+      <div class="card">
+        <div class="num">01</div>
+        <h3>항공권</h3>
+        <p>항공권은 개별 발권입니다. 도착 및 출발 시간은 투어 일정에 맞춰 안내드립니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="num">02</div>
+        <h3>해양 상황</h3>
+        <p>케라마 제도 출항 여부와 포인트는 기상 및 해양 상황에 따라 변경될 수 있습니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="num">03</div>
+        <h3>다이빙 안전</h3>
+        <p>브리핑, 버디 체크, 가이드 지시 준수는 필수입니다.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -356,11 +625,14 @@ section{padding:78px 18px}
 <section class="final" id="apply">
   <div class="container">
     <h2><strong>Kerama Blue</strong><br>참여 신청</h2>
-    <p>예약금 40만원으로 참가 신청이 확정됩니다.<br>카카오톡 또는 전화로 바로 문의하세요.</p>
+    <p>
+      예약금 40만원으로 참가 신청이 확정됩니다.<br>
+      카카오톡 또는 전화로 바로 문의하세요.
+    </p>
+
     <div class="btns">
-      <a href="http://pf.kakao.com/_sxaxmfK/chat" target="_blank" 
-        class="btn primary">카카오톡 1:1 문의</a>
-      <a href="tel:010-9879-6365" class="btn secondary">전화문의</a>
+      <a href="https://pf.kakao.com/_sxaxmfK/chat" target="_blank" class="btn primary">카카오톡 1:1 문의</a>
+      <a href="tel:010-9879-6365" class="btn secondary">010-9879-6365 전화문의</a>
     </div>
   </div>
 </section>
@@ -368,24 +640,19 @@ section{padding:78px 18px}
 <footer>
   Diving Solution · Kerama Islands Okinawa Diving Tour
 </footer>
+
 <script>
-
 function copyAccount(){
+  navigator.clipboard.writeText("3333-08-0806797");
 
-    navigator.clipboard.writeText("3333-08-0806797");
+  const btn=document.getElementById("copyBtn");
+  btn.innerHTML="✅ 복사 완료";
 
-    const btn=document.getElementById("copyBtn");
-
-    btn.innerHTML="✅ 복사 완료";
-
-    setTimeout(function(){
-
-        btn.innerHTML="📋 복사";
-
-    },2000);
-
+  setTimeout(function(){
+    btn.innerHTML="📋 복사";
+  },2000);
 }
-
 </script>
+
 </body>
 </html>
